@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class UserPreferences {
-    HashMap<String, string> settings;
+    HashMap<String, String> settings;
 
     public UserPreferences() {
         settings = new HashMap<>();
@@ -14,7 +14,7 @@ public class UserPreferences {
         settings.put(key, value);
     }
 
-    public String getProof(String key) {
-        return settings. getOrDefault(key, "");
+    public String getPref(String key) {
+        return settings.getOrDefault(key, "");
     }
 }

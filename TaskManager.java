@@ -26,8 +26,8 @@ public class TaskManager {
         }
     }
     
-    //edit task title and due fate for simplicity
-    public viod editTask(int idx, String newTitle, LocalDate newDueDate) {
+    //edit task title and due date for simplicity
+    public void editTask(int idx, String newTitle, LocalDate newDueDate) {
         if (idx >= 0 && idx < tasks.size()) {
             tasks.get(idx).title = newTitle;
             tasks.get(idx).dueDate = newDueDate;
@@ -48,11 +48,11 @@ public class TaskManager {
 
     // Algorithm 2: Detect conflicts (overlapping due dates)
     public void detectConflicts() {
-        bolean found = false;
+        boolean found = false;
         for (int i = 0; i < tasks.size(); i++) {
             for (int j = i + 1; j < tasks.size(); j++) {
                 if (tasks.get(i).dueDate.equals(tasks.get(j).dueDate)) {
-                    Systme.out.println("Conflict: " + tasks.get(i).title + " and " + tasks.get(j).title + " are due on " + tasks.get(i).dueDate);
+                    System.out.println("Conflict: " + tasks.get(i).title + " and " + tasks.get(j).title + " are due on " + tasks.get(i).dueDate);
                     found = true;
                 }
             }
