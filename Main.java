@@ -1,3 +1,8 @@
+//Francisco Vazquez
+//CPSC-39
+//7/18/25
+//Final Project: Task Management System
+//This is a console-based productivity app designed to help users organize and manage their daily tasks efficiently
 import java.util.Scanner;
 import java.time.LocalDate;
 
