@@ -63,9 +63,44 @@ public class Main {
                 System.out.println("Tasks sorted.");
             }
             else if (choice == 7) {
-                
+                tm.detectConflicts();
             }
-           }
+            else if (choice == 8) {
+                System.out.println("This creates a recurring task (weekly, n times).");
+                sc.nextLine();
+                System.out.print("Title: ");
+                String title = sc.nextLine();
+                System.out.print("First due date (YYYY-MM-DD): ");
+                LocalDate due = Utility.parseDate(sc.nextLine());
+                int priority = Utility.getInt(sc, "Priority (1=High,2=Med,3=Low): ");
+                System.out.print("Status (todo/done): ");
+                String status = sc.next();
+                System.out.println("Category (0=Work,1=School,2=Personal,3=Errand,4=Other): ");
+                int catIdx = Utility.getInt(sc, "");
+                System.out.print("How many times to repeat? ");
+                int recurCount = Utility.getInt(sc, "");
+                Task t = new Task(title, due, priority, status, tm.categories[catIdx], true, recurCount);
+                tm.addTask(t);
+                tm.addRecurringTasks(t, recurCount, 7);
+            }
+            else if (choice == 9) {
+                System.out.println("Preferences: 1. Set default priority 2. Toggle notifications");
+                int p = Utility.getInt(sc, "");
+                if (p == 1) {
+                    int newPri = Utility.getInt(sc, "New Default priority: ");
+                    prefs.setPref("defaultpriority", Integer.toString(newPri));
+                    System.out.println("Set.");
+                } else if (p == 2) {
+                    String cur = prefs.getPref("notifications");
+                    prefs.setPref("notifications", cur.equals("on") ? "off" : "on");
+                    System.out.println("Notifications " + prefs.getPref("notifications"));
+                }
+            }else if (choice == 0) {
+                System.out.println("Goodbye!");
+                break;
+            }
         }
+        }
+        sc.close();
     }
 }
